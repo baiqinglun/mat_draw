@@ -2,13 +2,11 @@ import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import tkinter as tk
-from tkinter import messagebox, filedialog
-from tkinter import ttk
+from tkinter import messagebox, filedialog,ttk
 from PIL import Image, ImageTk
 import numpy as np
 import scipy.io
 import json
-import os
 
 def load_cache(file_path):
     """从 JSON 文件加载缓存数据"""
@@ -37,13 +35,11 @@ class CurvePlotterApp:
         # 设置输出目录
         self.output_dir = 'csv_output'
         self.csv_files = []
-        self.save_dir = ''  # 初始化保存目录
         self.images = []  # 存储绘制的图像
 
         # 创建界面元素
         self.convert_button = tk.Button(master, text="转换 .mat 为 .csv", command=self.convert_mat_to_csv)
         self.convert_button.grid(row=0, column=0, padx=5, pady=5)
-
 
         self.label = tk.Label(master, text="选择绘制方式:")
         self.label.grid(row=1, column=0, sticky='w', padx=5, pady=5)
@@ -81,7 +77,7 @@ class CurvePlotterApp:
 
         # 创建滚动区域
         self.scroll_frame = tk.Frame(master)
-        self.scroll_frame.grid(row=4, column=3, rowspan=5, sticky='nsew', padx=5, pady=5)
+        self.scroll_frame.grid(row=0, column=3, rowspan=5, sticky='nsew', padx=5, pady=5)
 
         self.canvas = tk.Canvas(self.scroll_frame)
         self.scrollbar = tk.Scrollbar(self.scroll_frame, orient="vertical", command=self.canvas.yview)
